@@ -1,15 +1,16 @@
-version: '3.8'
 services:
   acestream:
-    image: smarquezp/docker-acestream-ubuntu-home:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: acestream
-    restart: unless-stopped
+    restart: no
     ports:
-      - 6878:6878
+      - "6878:6878" # Mapeo del puerto HTTP
+      - "6879:6879" # Mapeo del puerto HTTPS
+      - "8621:8621" # Mapeo del puerto Engine
     environment:
       - INTERNAL_IP=127.0.0.1
+      - ENGINE_PORT=6969
       - HTTP_PORT=6878
       - HTTPS_PORT=6879
-networks:
-  default:
-    driver: bridge
