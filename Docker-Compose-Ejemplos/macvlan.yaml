@@ -1,0 +1,18 @@
+services:
+  acestream:
+    image: unapersonapeculiar/acestream:latest
+    container_name: acestream1
+    networks:
+      my-macvlan-net:
+        ipv4_address: 192.168.1.99 # Ipv4 Fija dentro del rango de tu red
+    environment:
+      - INTERNAL_IP=192.168.1.99 # Ipv4 Fija dentro del rango de tu red
+      - ENGINE_PORT=6969 #
+      - HTTP_PORT=6878 #
+      - HTTPS_PORT=6879 #
+    restart: unless-stopped 
+
+networks:
+  my-macvlan-net:
+    external: true
+    name: my-macvlan-net

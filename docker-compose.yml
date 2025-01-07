@@ -11,6 +11,6 @@ services:
       - "8621:8621" # Mapeo del puerto Engine
     environment:
       - INTERNAL_IP=127.0.0.1
-      - ENGINE_PORT=6969
+      - ENGINE_PORT=8621
       - HTTP_PORT=6878
       - HTTPS_PORT=6879
